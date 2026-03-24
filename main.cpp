@@ -4,53 +4,55 @@ using namespace std;
 
 int main()
 {
-    const double PERC19 = 0.2;
-    const double PERC49 = 0.3;
-    const double PERC99 = 0.4;
-    const double PERC100 = 0.5;
-    const double Price = 99.00;
+    const double RATE2  = 1.10;
+    const double RATE6  = 2.20;
+    const double RATE10 = 3.70;
+    const double RATE20 = 4.80;
+    double weight, distance, dRate, price;
 
-    double totalCost, originalAmount, discountAmount, dRate;
-    int numberofSold;
+    cout << "Enter the package weight and distance\n";
+    cin >> weight >> distance;
 
-    cout << "Enter the number of units sold\n";
-    cin >> numberofSold;
-    
-    if (numberofSold < 0)
+    if (weight <= 0 || weight > 20)
     {
-        cout << "Error: input must be a positive integer." << endl;
+        cout << "Error: invalid weight" << endl;
         return 0;
     }
 
-    if (numberofSold >= 100)
+    if (distance < 10 || distance > 3000)
     {
-        dRate = PERC100;
+        cout << "Error: invalid distance" << endl;
+        return 0;
     }
-    else if (numberofSold >= 50)
+
+    if (weight <= 2)
     {
-        dRate = PERC99;
+        dRate = RATE2;
     }
-    else if (numberofSold >= 20)
+    else if (weight <= 6)
     {
-        dRate = PERC49;
+        dRate = RATE6;
     }
-    else if (numberofSold >= 10)
+    else if (weight <= 10)
     {
-        dRate = PERC19;
+        dRate = RATE10;
     }
     else
     {
-        dRate = 0.0;
+        dRate = RATE20;
     }
 
-    originalAmount = numberofSold * Price;
-    discountAmount = originalAmount * dRate;
-    totalCost = originalAmount - discountAmount;
+    if (distance > 500)
+    {
+        price = (distance / 500.0) * dRate;
+    }
+    else
+    {
+        price = dRate;
+    }
 
     cout << setprecision(2) << fixed;
-    cout << "Original amount is " << originalAmount << endl;
-    cout << "Discount amount is " << discountAmount << endl;
-    cout << "Total Price is " << totalCost << endl;
+    cout << "The shipping price for package is " << price << endl;
 
     return 0;
 }
