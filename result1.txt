@@ -1,2 +1,6 @@
 Enter the package weight and distance
 The shipping price for package is 4.80
+<<<<<<< HEAD
+=======
+
+>>>>>>> 827cf71f437aeb9e381e7ce732038c50bc86603a
